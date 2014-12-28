@@ -1,0 +1,91 @@
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+int k = 0;
+int n , m ;
+int ans[100];
+int qq, p;
+void fun(int x, int y, int z)
+{
+	if (x == 0 && y%m == 0)
+	{
+		//cout << "333333" ;
+		k++;
+		cout << "%%";
+		for (int i = 0;i < qq;i++)
+		{
+			cout << ans[i] <<"***";
+		}
+		cout <<"%%" <<endl;
+		
+		return;
+	}
+	if (x < 0)
+	{
+		//cout << "11111"  ;
+		return;
+	}
+	for (int i = p;i <= x;i++)
+	{
+		if (i  <= z)
+		{
+			//cout << "22222"  ;
+			continue;
+		}
+		p++;
+		ans[qq++] = i;
+		//cout << p-1 << "~~" << i <<" ~~~" <<z<<"【" <<x-i <<"~~~~"<< y*i << "】"<< endl;
+		fun(x - i, y*i, i);
+		qq--;
+		p--;
+	}
+}
+int main()
+{
+	while(cin >> n >> m)
+	{
+		k = 0;
+		qq = 0;
+		p = 1;
+		fun(n, 1, -1);
+		cout << k << endl;
+	}
+}
+//#include "stdio.h"  
+//#include <iostream>  
+//#include<cmath>
+//using namespace std;  
+//int n,m,rst; 
+//int qq;
+//int ans[100];
+//unsigned gcd(unsigned a , unsigned b)
+//{
+//   if(b==0) return a;
+//   a%=b;
+//   return gcd(b,a);
+//}
+//void test(int now_pos,int lft,int p){  
+//    if(lft == 0){  
+//        if(p == m)rst++;
+//		for(int i=0;i<qq;i++){
+//			printf("%d***",ans[i]);
+//		}
+//		printf("\n");
+//        return ;  
+//    }  
+//    for(int i=now_pos;i<=lft;i++){ 
+//		//cout<<"i:-----"<<i<<"p:-----"<<p<<"lft:----"<<lft<<"p*i:----"<<p*i<<"rst:-----"<<rst<<endl;
+//		ans[qq++]=i;
+//		test(i+1,lft-i,gcd(p*i,m));
+//		qq--;
+//		//cout<<p*i<<endl;
+//    }  
+//}  
+//int main(){  
+//      while(~scanf("%d%d",&n,&m)){  
+//        rst = 0;  
+//        test(1,n,1);  
+//        printf("%d\n",rst);  
+//    }  
+//    return 0;  
+//}
